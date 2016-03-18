@@ -5,9 +5,22 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+    <h1>Hey This Also Crew!</h1>
+
+<p id ="file"></p>
+
+    I'm built this test Mac application using web languages and node.<br>Now enjoy this taco
+	<img src ="http://www.halfbakedharvest.com/wp-content/uploads/2013/07/Sweet-potato-+-Chorizo-Tacos-with-Black-Bean-Salsa-and-Roasted-Poblano-Avocado-Crema-11.jpg">  
+
+
+<script>
+
+var fs = require("fs");
+
+var data = fs.readFileSync('input.txt');
+document.getElementById("file").innerHTML =  "Synchronous read: " + data.toString();
+
+</script>
+
+ </body>
 </html>
