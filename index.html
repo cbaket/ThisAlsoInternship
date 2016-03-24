@@ -7,20 +7,27 @@
   <body>
     <h1>Hey This Also Crew!</h1>
 
-<p id ="file"></p>
 
-    I'm built this test Mac application using web languages and node.<br>Now enjoy this taco
-	<img src ="http://www.halfbakedharvest.com/wp-content/uploads/2013/07/Sweet-potato-+-Chorizo-Tacos-with-Black-Bean-Salsa-and-Roasted-Poblano-Avocado-Crema-11.jpg">  
-
+<div id="holder">
+  Drag your file here
+</div>
 
 <script>
+  var holder = document.getElementById('holder');
+  holder.ondragover = function () {
+    return false;
+  };
+  holder.ondragleave = holder.ondragend = function () {
+    return false;
+  };
+  holder.ondrop = function (e) {
+    e.preventDefault();
+    var file = e.dataTransfer.files[0];
+    console.log('File you dragged here is', file.path);
+    return false;
+  };
+</script> 
 
-var fs = require("fs");
 
-var data = fs.readFileSync('input.txt');
-document.getElementById("file").innerHTML =  "Synchronous read: " + data.toString();
-
-</script>
-
- </body>
+</body>
 </html>
