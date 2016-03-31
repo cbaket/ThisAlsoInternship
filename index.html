@@ -3,51 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   </head>
   <body>
     <h1>Hey This Also Crew!</h1>
 
 
-<div id="holder">
+<div id="view">
   Drag your file here
 </div>
 
 <script>
-  var holder = document.getElementById('holder');
-  holder.ondragover = function () {
-    return false;
-  };
-  holder.ondragleave = holder.ondragend = function () {
-    return false;
-  };
-  holder.ondrop = function (e) {
-    e.preventDefault();
-    var file = e.dataTransfer.files[0];
-    console.log('File you dragged here is', file.path);
-    return false;
-  };
-
 
 
 $(document).ready(function(){
-var dir = “testFolder/”;
-var fileextension=”.png”;
-$.ajax({
-//This will retrieve the contents of the folder if the folder is configured as ‘browsable’
-url: dir,
-success: function (data) {
-//Lsit all png file names in the page
-$(data).find(“a:contains(” + fileextension + “)”).each(function () {
-var filename = this.href.replace(window.location.host, “”).replace(“http:///”,”");
-$(“#view”).append($(“”));
+	var fs = require("fs");
+
+
+	fs = fs.readdirSync('testFolder')
+	console.log(fs);
 });
-}
-});
-})
-
-
-};
-
 
 </script> 
 
