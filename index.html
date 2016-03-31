@@ -9,11 +9,15 @@
     <h1>Hey This Also Crew!</h1>
 
 
-<div id="view">
+<div id="drag">
   Drag your file here
 </div>
 
 <p id="display"></p>
+
+
+<p>PNG sorting</p>
+<p id = "png"></p>
 
 <script>
 
@@ -21,15 +25,29 @@
 $(document).ready(function(){
 	var fs = require("fs");
 	var displayStr = "";
-
+	var fileExtension= ".png";
+	var dir = "testFolder/";
+	var pngStr = "";
+  var re = /png/gi;
 
 	fs = fs.readdirSync('testFolder')
 
 	for ( i = 0; i < fs.length; i++){
 	    displayStr += fs[i] + "<br>";
+
+         var str = fs[i];
+         
+         if ( str.search(re) != -1 ){
+            pngStr += fs[i] + "<br>";
+	}
+
 }
 
+
+
 document.getElementById("display").innerHTML = displayStr;
+document.getElementById("png").innerHTML = pngStr;
+
 
 });
 
