@@ -13,15 +13,24 @@
   Drag your file here
 </div>
 
+<p id="display"></p>
+
 <script>
 
 
 $(document).ready(function(){
 	var fs = require("fs");
+	var displayStr = "";
 
 
 	fs = fs.readdirSync('testFolder')
-	console.log(fs);
+
+	for ( i = 0; i < fs.length; i++){
+	    displayStr += fs[i] + "<br>";
+}
+
+document.getElementById("display").innerHTML = displayStr;
+
 });
 
 </script> 
