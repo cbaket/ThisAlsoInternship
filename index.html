@@ -14,10 +14,7 @@
 </div>
 
 <p id="display"></p>
-
 <p></p>
-<p>PNG sorting</p>
-<p id = "png"></p>
 
 <script>
 
@@ -54,7 +51,8 @@ function createFiletypeElement(array){
 
 		console.log(rando);
 		rando.appendTo('body');
-		console.log(array[i]);
+		console.log(array[i]);                   var fileT = fs[i].split('.').pop();
+
 	
 		document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
 	    })(i);
@@ -119,9 +117,21 @@ $(document).ready(function(){
 	for (i = 0; i < fileTypes.length; i++){
 		console.log(fileTypes[i]);
 
-                var rando = $("<p></p>").attr('id', fileTypes[i]).appendTo('body');
+                $("<p></p>").attr('id', fileTypes[i]).appendTo('body');
+		var displaying = "";
 
-                document.getElementById(fileTypes[i]).innerHTML = fileTypes[i] + " SORTED LIST";
+		for (j = 0; j < fs.length; j++){		                   
+
+			var fileT = fs[j].split('.').pop();
+			if (fileT == fileTypes[i]){
+				displaying += fs[j] + "<br>";
+			}
+
+			console.log(displaying);
+			
+		}
+
+                document.getElementById(fileTypes[i]).innerHTML = displaying;
 
         }
 
