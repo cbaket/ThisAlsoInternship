@@ -25,16 +25,23 @@ function getFiletype(array){
         <!-- Takes an array of files and returns an array of file extensions -->
 
         var fileTypes = [];
+	var foundOrNah = false;
 
         if (array == []){
 		return fileTypes;
 	}
         for ( i = 0; i < array.length; i++){
            var fileT = array[i].split('.').pop();
+		for (i = 0; i < fileTypes.length; i++){
+                	if (fileTypes[i] == fileT){
+                		foundOrNah = true; 
+			}
+		}
 
-                if (!contains.call(fileTypes, fileT)){
-                        fileTypes.push(fileT);
-                 }
+	if (foundOrNah){
+		fileTypes.push(fileT);
+	}
+
         }
         return fileTypes;
 }
@@ -71,19 +78,56 @@ function displayFiles(dir){
 	return displayStr;
 }
 
+
+
+
 $(document).ready(function(){
-	var fs = require("fs");
-	var displayStr = "";
-	var filetypes = ['ai', 'png', 'jessica'];
 	var fileExtension= ".png";
 	var dir = "testFolder";
 	var pngStr = "";
   	var re = /png/gi;
+        var fs = require("fs");
+
+         fs = fs.readdirSync(dir);
+	
+	var fileTypes = [];
+
+        for ( i = 0; i < fs.length; i++){
+	        var newOrNah = true;
+        	   var fileT = fs[i].split('.').pop();
+
+		console.log(fileT)
+                for (j = 0; j < fileTypes.length; j++){
+                        if (fileTypes[j] == fileT){
+                                newOrNah = false;
+                        }
+                }
+
+	        if (newOrNah){
+        	        fileTypes.push(fileT);
+			console.log(fileT + " has been added to the fileTypes list")
+	        } else {
+                        console.log(fileT + " was not added to the fileTypes list")
+
+		}
 
 
+        }
+
+
+
+	for (i = 0; i < fileTypes.length; i++){
+		console.log(fileTypes[i]);
+
+                var rando = $("<p></p>").attr('id', fileTypes[i]).appendTo('body');
+
+                document.getElementById(fileTypes[i]).innerHTML = fileTypes[i] + " SORTED LIST";
+
+        }
 
 
 document.getElementById("display").innerHTML = displayFiles(dir);
+
 
 
 
