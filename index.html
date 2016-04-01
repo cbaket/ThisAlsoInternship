@@ -80,12 +80,8 @@ function displayFiles(dir){
 
 
 $(document).ready(function(){
-	var fileExtension= ".png";
 	var dir = "testFolder";
-	var pngStr = "";
-  	var re = /png/gi;
         var fs = require("fs");
-
          fs = fs.readdirSync(dir);
 	
 	var fileTypes = [];
@@ -116,32 +112,38 @@ $(document).ready(function(){
 
 	for (i = 0; i < fileTypes.length; i++){
 		console.log(fileTypes[i]);
+                $("<p></p>").attr('id', 'space').appendTo('body');
 
-                $("<p></p>").attr('id', fileTypes[i]).appendTo('body');
-		var displaying = "";
+                $("<div></div>").attr('id', fileTypes[i]).appendTo('body');
+		var fileTDiv = document.getElementById(fileTypes[i]);
 
 		for (j = 0; j < fs.length; j++){		                   
 
 			var fileT = fs[j].split('.').pop();
 			if (fileT == fileTypes[i]){
-				displaying += fs[j] + "<br>";
+	               		$("<button></button>" ).attr('id', fs[j]).appendTo(fileTDiv);		
+		                document.getElementById(fs[j]).innerHTML = fs[j];
 			}
 
-			console.log(displaying);
-			
 		}
 
-                document.getElementById(fileTypes[i]).innerHTML = displaying;
 
         }
 
 
-document.getElementById("display").innerHTML = displayFiles(dir);
+		document.getElementById("display").innerHTML = displayFiles(dir);
 
 
 
 
 });
+
+
+function myFunction(dir, filename){
+	    document.open( dir + "/"+ filename, "replace");
+
+}
+
 
 </script> 
 
