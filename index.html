@@ -40,44 +40,51 @@ function getFiletype(array){
 }
 
 function createFiletypeElement(array){
-	for (i = 0; array.length; i++){
+	for (i = 0; i < array.length; i++){
 		( function(i) {
-		$("<p></p>").attr('id',array[i]).appendTo('body');
+		console.log(i);
+		var rando = $("<p></p>").attr('id',array[i]);
+
+		console.log(rando);
+		rando.appendTo('body');
+		console.log(array[i]);
+	
 		document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
 	    })(i);
 
 	}
 }
 
+
+function displayFiles(dir){
+	var displayStr = "";
+        var fs = require("fs");
+
+	 fs = fs.readdirSync(dir);
+	
+        for ( i = 0; i < fs.length; i++){
+
+         displayStr += fs[i] + "<br>";
+         var str = fs[i];
+        }
+
+	return displayStr;
+}
+
 $(document).ready(function(){
 	var fs = require("fs");
 	var displayStr = "";
-
-
 	var filetypes = ['ai', 'png', 'jessica'];
-
 	var fileExtension= ".png";
-	var dir = "testFolder/";
+	var dir = "testFolder";
 	var pngStr = "";
-  var re = /png/gi;
-
-	fs = fs.readdirSync('testFolder')
-
-	for ( i = 0; i < fs.length; i++){
-
-	 displayStr += fs[i] + "<br>";
-
-         var str = fs[i];
-         
-         if ( str.search(re) != -1 ){
-            pngStr += fs[i] + "<br>";
-	}
-
-}
+  	var re = /png/gi;
 
 
-document.getElementById("display").innerHTML = displayStr;
-document.getElementById("png").innerHTML = pngStr;
+
+
+document.getElementById("display").innerHTML = displayFiles(dir);
+
 
 
 });
