@@ -3,6 +3,8 @@
   	<head>
     		<meta charset="UTF-8">
     		<title>SALSA</title>
+		<link rel = "stylesheet" type="text/css" href = "css/index.css">
+		<link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:700,900' rel='stylesheet' type='text/css'>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   	</head>
         <body>
@@ -11,7 +13,7 @@
                         <p>created 02/12/16</p>
                 </div>
                 <div id="main">
-                        <div id = "pinned">
+                        <div id = "pinned" class = "left">
                                 <section>
                                         <h2>Pinned</h2>
                                         <ul>
@@ -23,7 +25,7 @@
                                         </ul>
                                 </section>
                         </div>
-                        <div id = "recent">
+                        <div id = "recent" class = "right">
                                 <section>
                                         <h2>Recent</h2>
                                         <ul>
@@ -37,33 +39,15 @@
                         </div>
 
                 </div>
-
-
-
-
-
-                <script>
-                        var holder = document.getElementById('holder');
-                        holder.ondragover = function () {
-                                return false;
-                        };
-
-                        holder.ondragleave = holder.ondragend = function () {
-    return false;
-  };
-  holder.ondrop = function (e) {
-    e.preventDefault();
-    var file = e.dataTransfer.files[0];
-    console.log('File you dragged here is', file.path);
-    return false;
-  };
-
-
-
-</script>
-
-
-        </body>
+        	<nav>
+			<a href = "">PNG</a><br>
+			<a href = "">PSD</a><br>
+			<a href = "">JPG</a><br>
+			<a href = "">SKETCH</a><br>
+			<a href = "">AI</a><br>
+			<a href = "">PSD</a><br>
+		</nav>
+	</body>
 </html>
 
 
