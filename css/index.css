@@ -4,6 +4,7 @@ html {
 
 body {
 	padding-left: 2em;
+	margin: 0;
 }
 
 #leftBody {
@@ -52,7 +53,8 @@ h2, li {
 
 h2 {
 	text-transform: uppercase;
-	padding-left: 1.6em;
+	padding-left: 1.2em;
+	font-size: 30px;
 }
 
 li {
@@ -69,6 +71,16 @@ ul {
 	padding-left: 8em;
 }
 
+img {
+	height: 12px;
+}
+
+.selection {
+	padding-top: 1.5em;
+    	padding-left: 2em;
+}
+
+
 
 /****************************************     
 NAVIGATION SIDEBAR!!!     
@@ -79,13 +91,15 @@ nav {
 	background-color: rgba(255, 255, 255, .5);
 	
 	height: 100vh;
-	padding-top: 2em;
+	width: 25%;
+	padding-top: 25%;
+	
+	text-align: center;
 }
 
 a {
 	color: #4A4A4A;
 	text-decoration: none;
-
 	padding-top: 2em;
 }
 
@@ -95,3 +109,6 @@ a {
 	text-transform:uppercase; 
 }
 
+#option ul {
+	padding: 0em;
+}
