@@ -2,7 +2,13 @@ html {
 	background-color: #B2E5E3;
 }
 
+body {
+	padding-left: 2em;
+}
 
+#leftBody {
+	float: left;
+} 
 
 
 /****************************************
@@ -11,9 +17,28 @@ HEADER!!!
 
 h1 {
 	font-family: Oswald;
+	font-weight: 700;
+	font-size: 48px;
+	color: #4A4A4A;
 }
 
 
+p {
+        font-family: Oswald;
+        font-weight: 300;
+	font-size: 17px;
+	color: #4A4A4A;
+}
+
+
+#create {
+	padding-top: 1.8em;
+	padding-left: 1em;
+}
+
+div#heading {
+	padding-left: 2.1em;
+}
 
 /****************************************
 MAIN PINNED AND RECENT!!!
@@ -22,30 +47,51 @@ MAIN PINNED AND RECENT!!!
 h2, li {
 	font-family: Lato;
 	font-weight: 700;
+	color: #4A4A4A;
 }
 
-
-p {
-	font-family: Oswald;
-	font-weight: 300;
+h2 {
+	text-transform: uppercase;
+	padding-left: 1.6em;
 }
 
+li {
+	text-transform: lowercase;
+	padding-bottom: .6em;
+}
 
+ul {
+	list-style-type: none;
+}
+
+.recent {
+
+	padding-left: 8em;
+}
 
 
 /****************************************     
 NAVIGATION SIDEBAR!!!     
 ****************************************/
 
-#option {
-	font-family: Lato;
-	font-weight: 900;
+nav {
+	float: right;
+	background-color: rgba(255, 255, 255, .5);
+	
+	height: 100vh;
+	padding-top: 2em;
 }
 
+a {
+	color: #4A4A4A;
+	text-decoration: none;
 
+	padding-top: 2em;
+}
 
-
-
-
-
+#option li{
+	font-family: Lato;
+	font-weight: 900;
+	text-transform:uppercase; 
+}
 
