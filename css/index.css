@@ -45,7 +45,7 @@ div#heading {
 MAIN PINNED AND RECENT!!!
 ****************************************/
 
-h2, li {
+h2, li, button {
 	font-family: Lato;
 	font-weight: 700;
 	color: #4A4A4A;
@@ -78,6 +78,20 @@ img {
 .selection {
 	padding-top: 1.5em;
     	padding-left: 2em;
+}
+
+
+.selection ul {
+	padding-left: 6em;
+}
+
+
+.leftList {
+	float: left;
+}
+
+.rightList {
+	float : right; 
 }
 
 
