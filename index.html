@@ -170,10 +170,9 @@ $(document).ready(function(){
 		var recentDiv = document.getElementById('recent');
 	    	exec('open ' + dir + files[i]);
 
-		$("<li></li>" ).attr('id', files[i]).appendTo(recentDiv);		
+		$("<button></button>" ).attr('id', files[i]).appendTo(recentDiv);		
 		document.getElementById(files[i]).innerHTML = files[i];
 	
-
 	}
 
 
