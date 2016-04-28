@@ -15,7 +15,7 @@
 	
 
 		<a href="testFolder/input.txt">THIS SHOULD OPEN A TEXT FILE</a>
-                <a href="testFolder/21.png">THIS SHOULD OPEN A PNG FILE</a>
+                <a href="testFolder/aOrange.jpg">THIS SHOULD OPEN A PNG FILE</a>
                 <a href="testFolder/v240.ai">THIS SHOULD OPEN AN AI FILE</a>
 
 
@@ -148,6 +148,8 @@ function myFunction(dir, filename){
 
 $(document).ready(function(){
 
+	var exec = require('child_process').exec;
+
 	var dir = 'testFolder/';
     var fs = require("fs");
 	
@@ -173,7 +175,8 @@ $(document).ready(function(){
 		console.log(files[i]);
 		
 		var recentDiv = document.getElementById('recent');
-	           		
+		        exec('open ' + dir + files[i]);
+           		
 	    $("<li></li>" ).attr('id', files[i]).appendTo(recentDiv);		
 		document.getElementById(files[i]).innerHTML = files[i];
 	
