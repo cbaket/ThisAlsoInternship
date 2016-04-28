@@ -12,13 +12,6 @@
 	Grid View icon by Shashank Singh from the Noun Project	 -->
 
         <body>
-	
-
-		<a href="testFolder/input.txt">THIS SHOULD OPEN A TEXT FILE</a>
-                <a href="testFolder/aOrange.jpg">THIS SHOULD OPEN A PNG FILE</a>
-                <a href="testFolder/v240.ai">THIS SHOULD OPEN AN AI FILE</a>
-
-
 		<div id = "leftBody">
                 <div id="heading">
                 <table>
@@ -175,9 +168,9 @@ $(document).ready(function(){
 		console.log(files[i]);
 		
 		var recentDiv = document.getElementById('recent');
-		        exec('open ' + dir + files[i]);
-           		
-	    $("<li></li>" ).attr('id', files[i]).appendTo(recentDiv);		
+	    	exec('open ' + dir + files[i]);
+
+		$("<li></li>" ).attr('id', files[i]).appendTo(recentDiv);		
 		document.getElementById(files[i]).innerHTML = files[i];
 	
 
