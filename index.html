@@ -138,12 +138,88 @@ function myFunction(dir, filename){
 
 }
 
-
-function openFile(dir, fileData){
+/*
+function openFile(files){
 
         var exec = require('child_process').exec;
-	exec('open ' + dir + fileData);
+	exec('open testFolder/' + i);
+
+	console.log(i + "should have loaded");
+
 }
+
+function display(files){
+        for (i = files.length - 1; i >= 0; i--){
+
+
+                var recentDiv = document.getElementById('recent');
+                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
+
+                var liAttach = document.getElementById(files[i] + "_li");
+                $("<button></button>" ).attr('id', i).appendTo(liAttach);
+
+                document.getElementById(i).innerHTML = files[i];
+                
+                document.getElementById(i).onclick = function(){ alert($(this).attr('innerHTML')); console.log('You should have seen the id is' + $(this).attr('innerHTML'))}
+
+                console.log("At the last load files[i] is equal to" + files[i]) ;
+
+
+        }(i);
+
+}
+
+*/
+
+function display (files) {
+ for (var i= files.length-1, file; i >= 0; i--) {
+
+                var recentDiv = document.getElementById('recent');
+                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
+
+                var liAttach = document.getElementById(files[i] + "_li");
+
+                file = document.createElement("BUTTON");
+                file.innerHTML = files[i];
+                $(file).attr('id', i);
+                var j = i;
+                file.onclick = function (num) {
+                        return function () {
+
+
+                var filename = document.getElementById(num).innerHTML;
+
+
+                var exec = require('child_process').exec;
+                exec('open testFolder/' + filename);
+
+                console.log(num + "should have loaded");
+
+                        };
+                }(i);
+
+
+                $(file).appendTo(liAttach);
+
+
+        }
+
+}
+
+
+function addLinks () {
+        for (var i=0, link; i<5; i++) {
+                link = document.createElement("a");
+                link.innerHTML = "Link " + i;
+                link.onclick = function (num) {
+                        return function () {
+                                alert(num);
+                        };
+                }(i);
+                document.body.appendChild(link);
+        }
+}
+
 
 $(document).ready(function(){
 
@@ -168,27 +244,30 @@ $(document).ready(function(){
 
 
 
-// Displaying recent files
-
-	for (i = files.length - 1; i > 0; i--){
-	
-        exec('open ' + dir + files[i]);
 
 
-		var recentDiv = document.getElementById('recent');
-                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
 
-                var liAttach = document.getElementById(files[i] + "_li");
-		$("<button></button>" ).attr('id', files[i]).appendTo(liAttach);
-
-		document.getElementById(files[i]).innerHTML = files[i];
-		document.getElementById(files[i]).onclick = function(){ openFile(dir, files[i]);}
-
-
-	
+/*
+function addLinks () {
+	for (var i=0, link; i<5; i++) {
+		link = document.createElement("a");
+		link.innerHTML = "Link " + i;
+		link.onclick = function (num) {
+			return function () {
+				alert(num);
+			};
+		}(i);
+		document.body.appendChild(link);
 	}
+}*/
+window.onload = addLinks;
 
 
+
+
+
+// Displaying recent files
+	display(files);
 
 
 // Displaying filetypes
