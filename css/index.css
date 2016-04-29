@@ -60,6 +60,7 @@ h2 {
 li {
 	text-transform: lowercase;
 	padding-bottom: .6em;
+	font-size: 15px;
 }
 
 ul {
@@ -97,12 +98,18 @@ img {
 
 button {
 	
-	backgorund-color: #B2E5E3; 
+	background-color: #B2E5E3; 
 	border: none;
-	outline: #6200E9;
-
+	font-size: 15px;
 }
 
+/*
+ button:active, button:focus 
+ {
+     border:0.1em solid #6200E9;  here configure as your needs
+  }
+
+*/
 
 /****************************************     
 NAVIGATION SIDEBAR!!!     
