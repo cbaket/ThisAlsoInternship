@@ -100,6 +100,7 @@ function getFiletype(array){
 }
 
 function createFiletypeElement(array){
+
 	for (i = 0; i < array.length; i++){
 		( function(i) {
 		console.log(i);
@@ -173,7 +174,6 @@ function display(files){
 
 function display (files) {
  for (var i= files.length-1, file; i >= 0; i--) {
-
                 var recentDiv = document.getElementById('recent');
                 $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
 
@@ -241,29 +241,6 @@ $(document).ready(function(){
            });
 
 	console.log("files are sorted");
-
-
-
-
-
-
-/*
-function addLinks () {
-	for (var i=0, link; i<5; i++) {
-		link = document.createElement("a");
-		link.innerHTML = "Link " + i;
-		link.onclick = function (num) {
-			return function () {
-				alert(num);
-			};
-		}(i);
-		document.body.appendChild(link);
-	}
-}*/
-window.onload = addLinks;
-
-
-
 
 
 // Displaying recent files
