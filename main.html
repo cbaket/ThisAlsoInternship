@@ -2,7 +2,7 @@
 <html>
   	<head>
     		<meta charset="UTF-8">
-		<META HTTP-EQUIV="refresh" CONTENT="1">
+		<META HTTP-EQUIV="refresh" CONTENT="5">
 	
 	
     		<title>SALSA</title>
@@ -258,6 +258,13 @@ var fileTypes = [];
 
 }
 
+function startRefresh() {
+    $.get('', function(data) {
+        $(document.body).html(data);
+    });
+}
+
+
 
 $(document).ready(function(){
 
@@ -290,7 +297,12 @@ $(document).ready(function(){
 // Displaying filetypes
 
 
+//    setTimeout(startRefresh,1000);
+
 });
+
+
+
 
 </script> 
 
