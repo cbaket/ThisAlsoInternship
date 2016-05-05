@@ -26,30 +26,20 @@
                               		<td>
 						<h2>Pinned</h2> 
 						<div class = "selection">
-							<ul>
-								<li class = "leftList"><img src ="images/list.png"</li>
-								<li class = "rightList"><img src ="images/grid.png"</li>
-							</ul>
+							<ul><ul>
 						</div>
 					</td>
 					<td class = "recent">
 						<h2>Recent</h2> 
 						<div class = "selection">
-							<ul>
-								<li class = "leftList"><img src ="images/list.png"</li>
-								<li class = "rightList"><img src ="images/grid.png"</li>
-							</ul>
+							<ul></ul>
 						</div>
 					</td>
 				</tr>
 				<tr>
                 			<td id = "pinned">
 						<ul>
-                                                	<li>SamplePinOne.ai</li>
-                                                	<li>SamplePinTwo.jpg</li>
-                                                	<li>SamplePinThree.ai</li>
-                                                	<li>SamplePinFour.psd</li>
-                                                	<li>SamplePinFive.psd</li>
+                                                	<li>Click on the little gray circle to pin a file</li>
                               			</ul>
                       		</td>
 					<td class ="recent"> 
@@ -320,179 +310,3 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-  <body>
-    <h1>Hey This Also Crew!</h1>
-
-
-<div id="drag">
-  Drag your file here
-</div>
-
-<p id="display"></p>
-<p></p>
-
-<script>
-
-function getFiletype(array){
-       Takes an array of files and returns an array of file extensions 
-
-        var fileTypes = [];
-	var foundOrNah = false;
-
-        if (array == []){
-		return fileTypes;
-	}
-        for ( i = 0; i < array.length; i++){
-           var fileT = array[i].split('.').pop();
-		for (i = 0; i < fileTypes.length; i++){
-                	if (fileTypes[i] == fileT){
-                		foundOrNah = true; 
-			}
-		}
-
-	if (foundOrNah){
-		fileTypes.push(fileT);
-	}
-
-        }
-        return fileTypes;
-}
-
-function createFiletypeElement(array){
-	for (i = 0; i < array.length; i++){
-		( function(i) {
-		console.log(i);
-		var rando = $("<p></p>").attr('id',array[i]);
-
-		console.log(rando);
-		rando.appendTo('body');
-		console.log(array[i]);                   var fileT = fs[i].split('.').pop();
-
-	
-		document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
-	    })(i);
-
-	}
-}
-
-
-function displayFiles(dir){
-	var displayStr = "";
-        var fs = require("fs");
-
-	 fs = fs.readdirSync(dir);
-	
-        for ( i = 0; i < fs.length; i++){
-
-         displayStr += fs[i] + "<br>";
-         var str = fs[i];
-        }
-
-	return displayStr;
-}
-
-
-
-
-$(document).ready(function(){
-	var dir = "testFolder";
-        var fs = require("fs");
-         fs = fs.readdirSync(dir);
-	
-	var fileTypes = [];
-
-        for ( i = 0; i < fs.length; i++){
-	        var newOrNah = true;
-        	   var fileT = fs[i].split('.').pop();
-
-		console.log(fileT)
-                for (j = 0; j < fileTypes.length; j++){
-                        if (fileTypes[j] == fileT){
-                                newOrNah = false;
-                        }
-                }
-
-	        if (newOrNah){
-        	        fileTypes.push(fileT);
-			console.log(fileT + " has been added to the fileTypes list")
-	        } else {
-                        console.log(fileT + " was not added to the fileTypes list")
-
-		}
-
-
-        }
-
-
-
-	for (i = 0; i < fileTypes.length; i++){
-		console.log(fileTypes[i]);
-                $("<p></p>").attr('id', 'space').appendTo('body');
-
-                $("<div></div>").attr('id', fileTypes[i]).appendTo('body');
-		var fileTDiv = document.getElementById(fileTypes[i]);
-
-		for (j = 0; j < fs.length; j++){		                   
-
-			var fileT = fs[j].split('.').pop();
-			if (fileT == fileTypes[i]){
-	               		$("<button></button>" ).attr('id', fs[j]).appendTo(fileTDiv);		
-		                document.getElementById(fs[j]).innerHTML = fs[j];
-			}
-
-		}
-
-
-        }
-
-
-		document.getElementById("display").innerHTML = displayFiles(dir);
-
-
-
-
-});
-
-
-function myFunction(dir, filename){
-	    document.open( dir + "/"+ filename, "replace");
-
-}
-
-
-</script> 
-
-
-</body>
-</html>
-
-
-
--->

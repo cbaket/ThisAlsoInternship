@@ -103,6 +103,11 @@ button {
 	font-size: 15px;
 }
 
+
+td#pinned {
+	vertical-align: top;
+}
+
 /*
  button:active, button:focus 
  {
