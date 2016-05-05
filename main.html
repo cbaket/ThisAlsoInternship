@@ -12,12 +12,12 @@
 	Grid View icon by Shashank Singh from the Noun Project	 -->
 
         <body>
+
 		<div id = "leftBody">
                 <div id="heading">
                 <table>
 			<tr>
 				<td><h1 id = "folderName">SALSA</h1></td>
-                        	<td id = "create"><p>created 02/12/16</p></td>
                 </table>
 		</div>
                 <div id="main">
@@ -39,7 +39,7 @@
 				<tr>
                 			<td id = "pinned">
 						<ul>
-                                                	<li>Click on the little gray circle to pin a file</li>
+                                                	<li>Click on the little gray<br>circle to pin a file</li>
                               			</ul>
                       		</td>
 					<td class ="recent"> 
@@ -51,14 +51,7 @@
 		</div>
         	<nav>
 			<section id = "option">
-				<ul>
-				<li><a href = "">PNG</a></li>
-				<li><a href = "">PSD</a></li>
-				<li><a href = "">JPG</a></li>
-				<li><a href = "">SKETCH</a></li>
-				<li><a href = "">AI</a></li>
-				<li><a href = "">PSD</a></li>
-				</ul>
+				<ul id="filetype"></ul>
 			</section>
 		</nav>
 
@@ -165,6 +158,109 @@ function display (files) {
 }
 
 
+
+function nav (files ) {
+var fileTypes = [];
+
+                var filetypeUL = document.getElementById('filetype');
+		
+
+ for (var i= 0, file; i < files.length; i++) {
+        if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
+        	
+
+
+
+		//Displaying filetypes    
+    	
+                var newOrNah = true;
+                var fileTYPE = files[i].split('.').pop();
+
+
+                for (j = 0; j < fileTypes.length; j++){
+
+                    if (fileTypes[j] == fileTYPE) { 
+			newOrNah = false;  }
+                }
+
+                    if (newOrNah){
+                     fileTypes.push(fileTYPE);
+			
+                                console.log(fileTYPE + " has been added to the fileTypes list");
+                    } else {
+                    		console.log(fileTYPE + " was not added to the fileTypes list");
+                         }
+
+        
+
+
+
+		// Displaying all files
+
+                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(filetypeUL);
+
+                var liAttach = document.getElementById(files[i] + "_li");
+
+                file = document.createElement("BUTTON");
+                file.innerHTML = files[i];
+                $(file).attr('id', files[i]);
+                file.onclick = function (num) {
+                        return function () {
+
+                var filename = document.getElementById(num).innerHTML;
+
+
+                var exec = require('child_process').exec;
+                exec('open testFolder/' + filename);
+
+                console.log(num + "should have loaded");
+
+                        };
+                }(files[i]);
+
+
+                $(file).appendTo(liAttach);
+
+
+                }
+ }      
+
+
+ for ( var i = 0, fileTYPESfile; i < fileTypes.length; i++ ) {
+
+        	        $("<li></li>" ).attr('id', fileTypes[i]+"_li").appendTo(filetypeUL);
+	
+                	var liFTAttach = document.getElementById(fileTypes[i] + "_li");
+
+
+                            fileTYPESfile = document.createElement("BUTTON");
+                            fileTYPESfile.innerHTML = fileTypes[i];
+				
+				console.log(fileTYPESfile);
+
+                            $(fileTYPESfile).attr('id', fileTYPESfile);
+                            fileTYPESfile.onclick = function (ID) {
+                                    return function () {
+
+				    var filetypeName = document.getElementById(ID).innerHTML;
+
+				for (i = 0; i < files.length; i++){	
+				if (files[i].split('.').pop() != filetypeName){  $( "#" + files[i] ).hide();}	
+				
+				}
+                                    };
+                            }(fileTYPESfile);
+
+
+                            $(fileTYPESfile).appendTo(liFTAttach);
+
+	}
+
+
+}
+
+
+
 function addLinks () {
         for (var i=0, link; i<5; i++) {
                 link = document.createElement("a");
@@ -177,6 +273,11 @@ function addLinks () {
                 document.body.appendChild(link);
         }
 }
+
+
+
+
+
 
 
 $(document).ready(function(){
@@ -192,6 +293,7 @@ $(document).ready(function(){
 	console.log("files are going to be sorted");
 
 
+	nav(files);
 // Sorting files by date 
 	files.sort(function(a, b) {
                return fs.statSync(dir + a).mtime.getTime() - 
@@ -205,63 +307,8 @@ $(document).ready(function(){
 	display(files);
 
 
+
 // Displaying filetypes
-
-
-  //       for ( i = 0; i < fs.length; i++){
-	 //        var newOrNah = true;
-  //       	var fileT = fs[i].split('.').pop();
-
-		// 	console.log(fileT);
-
-
-		// 	console.log(fs[i].stat(path, [callback]));
-
-
-  //           for (j = 0; j < fileTypes.length; j++){
-                     
-		// 		if (fileTypes[j] == ('.git' || '.htaccess')){
-  //                   newOrNah = true;
-  //               } else if (fileTypes[j] == fileT){
-		// 			newOrNah = false;
-		// 		}
-  //           }
-
-	 //        if (newOrNah){
-  //       	    fileTypes.push(fileT);
-		// 		console.log(fileT + " has been added to the fileTypes list")
-	 //        } else {
-  //               console.log(fileT + " was not added to the fileTypes list")
-		// 	}
-
-  //       }
-
-
-
-		// for (i = 0; i < fileTypes.length; i++){
-		// 	console.log(fileTypes[i]);
-  //           $("<p></p>").attr('id', 'space').appendTo('body');
-  //           $("<div></div>").attr('id', fileTypes[i]).appendTo('body');
-		
-		// 	var fileTDiv = document.getElementById(fileTypes[i]);
-
-		// 	for (j = 0; j < fs.length; j++){		                   
-
-		// 		var fileT = fs[j].split('.').pop();
-		// 		if (fileT == fileTypes[i]){
-	 //           		$("<button></button>" ).attr('id', fs[j]).appendTo(fileTDiv);		
-		//         	document.getElementById(fs[j]).innerHTML = fs[j];
-		// 		}
-
-		// 	}
-
-
-  //       }
-
-
-		// document.getElementById("display").innerHTML = displayFiles(dir);
-
-
 
 
 });
