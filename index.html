@@ -129,41 +129,9 @@ function myFunction(dir, filename){
 
 }
 
-/*
-function openFile(files){
-
-        var exec = require('child_process').exec;
-	exec('open testFolder/' + i);
-
-	console.log(i + "should have loaded");
-
-}
-
-function display(files){
-        for (i = files.length - 1; i >= 0; i--){
-
-
-                var recentDiv = document.getElementById('recent');
-                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
-
-                var liAttach = document.getElementById(files[i] + "_li");
-                $("<button></button>" ).attr('id', i).appendTo(liAttach);
-
-                document.getElementById(i).innerHTML = files[i];
-                
-                document.getElementById(i).onclick = function(){ alert($(this).attr('innerHTML')); console.log('You should have seen the id is' + $(this).attr('innerHTML'))}
-
-                console.log("At the last load files[i] is equal to" + files[i]) ;
-
-
-        }(i);
-
-}
-
-*/
-
 function display (files) {
  for (var i= files.length-1, file; i >= 0; i--) {
+	if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
                 var recentDiv = document.getElementById('recent');
                 $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
 
@@ -192,8 +160,8 @@ function display (files) {
                 $(file).appendTo(liAttach);
 
 
-        }
-
+        	}
+	}
 }
 
 
