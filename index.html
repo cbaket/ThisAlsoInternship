@@ -12,265 +12,34 @@
 	Grid View icon by Shashank Singh from the Noun Project	 -->
 
         <body>
-		<div id = "leftBody">
-                <div id="heading">
-                <table>
-			<tr>
-				<td><h1 id = "folderName">SALSA</h1></td>
-                        	<td id = "create"><p>created 02/12/16</p></td>
-                </table>
-		</div>
-                <div id="main">
-                        <table>
-				<tr>
-                              		<td>
-						<h2>Pinned</h2> 
-						<div class = "selection">
-							<ul><ul>
-						</div>
-					</td>
-					<td class = "recent">
-						<h2>Recent</h2> 
-						<div class = "selection">
-							<ul></ul>
-						</div>
-					</td>
-				</tr>
-				<tr>
-                			<td id = "pinned">
-						<ul>
-                                                	<li>Click on the little gray circle to pin a file</li>
-                              			</ul>
-                      		</td>
-					<td class ="recent"> 
-                                		<ul id = "recent"></ul>
-				</td>
-				</tr>
-			</table>
-                </div>
-		</div>
-        	<nav>
-			<section id = "option">
-				<ul>
-				<li><a href = "">PNG</a></li>
-				<li><a href = "">PSD</a></li>
-				<li><a href = "">JPG</a></li>
-				<li><a href = "">SKETCH</a></li>
-				<li><a href = "">AI</a></li>
-				<li><a href = "">PSD</a></li>
-				</ul>
-			</section>
-		</nav>
 
+		<a href ="main.html">Main page</a>
+
+
+
+	<div id="holder">
+  Drag your file here
+</div>
 
 <script>
-
-function getFiletype(array){
-
-        var fileTypes = [];
-	var foundOrNah = false;
-
-        if (array == []){
-		return fileTypes;
-	}
-        for ( i = 0; i < array.length; i++){
-           var fileT = array[i].split('.').pop();
-		for (i = 0; i < fileTypes.length; i++){
-                	if (fileTypes[i] == fileT){
-                		foundOrNah = true; 
-			}
-		}
-
-	if (foundOrNah){
-		fileTypes.push(fileT);
-	}
-
-        }
-        return fileTypes;
-}
-
-function createFiletypeElement(array){
-
-	for (i = 0; i < array.length; i++){
-		( function(i) {
-		console.log(i);
-		var rando = $("<p></p>").attr('id',array[i]);
-
-		console.log(rando);
-		rando.appendTo('body');
-		console.log(array[i]);                   var fileT = fs[i].split('.').pop();
-
-	
-		document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
-	    })(i);
-
-	}
-}
-
-
-function displayFiles(dir){
-	var displayStr = "";
-        var fs = require("fs");
-
-	 fs = fs.readdirSync(dir);
-	
-        for ( i = 0; i < fs.length; i++){
-
-         displayStr += fs[i] + "<br>";
-         var str = fs[i];
-        }
-
-	return displayStr;
-}
-
-
-function myFunction(dir, filename){
-	    document.open( dir + "/"+ filename, "replace");
-
-}
-
-function display (files) {
- for (var i= files.length-1, file; i >= 0; i--) {
-	if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
-                var recentDiv = document.getElementById('recent');
-                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
-
-                var liAttach = document.getElementById(files[i] + "_li");
-
-                file = document.createElement("BUTTON");
-                file.innerHTML = files[i];
-                $(file).attr('id', i);
-                var j = i;
-                file.onclick = function (num) {
-                        return function () {
-
-
-                var filename = document.getElementById(num).innerHTML;
-
-
-                var exec = require('child_process').exec;
-                exec('open testFolder/' + filename);
-
-                console.log(num + "should have loaded");
-
-                        };
-                }(i);
-
-
-                $(file).appendTo(liAttach);
-
-
-        	}
-	}
-}
-
-
-function addLinks () {
-        for (var i=0, link; i<5; i++) {
-                link = document.createElement("a");
-                link.innerHTML = "Link " + i;
-                link.onclick = function (num) {
-                        return function () {
-                                alert(num);
-                        };
-                }(i);
-                document.body.appendChild(link);
-        }
-}
-
-
-$(document).ready(function(){
-
-	var exec = require('child_process').exec;
-
-	var dir = 'testFolder/';
-   	 var fs = require("fs");
-	
-
-	var files = fs.readdirSync(dir);
-
-	console.log("files are going to be sorted");
-
-
-// Sorting files by date 
-	files.sort(function(a, b) {
-               return fs.statSync(dir + a).mtime.getTime() - 
-                      fs.statSync(dir + b).mtime.getTime();
-           });
-
-	console.log("files are sorted");
-
-
-// Displaying recent files
-	display(files);
-
-
-// Displaying filetypes
-
-
-  //       for ( i = 0; i < fs.length; i++){
-	 //        var newOrNah = true;
-  //       	var fileT = fs[i].split('.').pop();
-
-		// 	console.log(fileT);
-
-
-		// 	console.log(fs[i].stat(path, [callback]));
-
-
-  //           for (j = 0; j < fileTypes.length; j++){
-                     
-		// 		if (fileTypes[j] == ('.git' || '.htaccess')){
-  //                   newOrNah = true;
-  //               } else if (fileTypes[j] == fileT){
-		// 			newOrNah = false;
-		// 		}
-  //           }
-
-	 //        if (newOrNah){
-  //       	    fileTypes.push(fileT);
-		// 		console.log(fileT + " has been added to the fileTypes list")
-	 //        } else {
-  //               console.log(fileT + " was not added to the fileTypes list")
-		// 	}
-
-  //       }
-
-
-
-		// for (i = 0; i < fileTypes.length; i++){
-		// 	console.log(fileTypes[i]);
-  //           $("<p></p>").attr('id', 'space').appendTo('body');
-  //           $("<div></div>").attr('id', fileTypes[i]).appendTo('body');
-		
-		// 	var fileTDiv = document.getElementById(fileTypes[i]);
-
-		// 	for (j = 0; j < fs.length; j++){		                   
-
-		// 		var fileT = fs[j].split('.').pop();
-		// 		if (fileT == fileTypes[i]){
-	 //           		$("<button></button>" ).attr('id', fs[j]).appendTo(fileTDiv);		
-		//         	document.getElementById(fs[j]).innerHTML = fs[j];
-		// 		}
-
-		// 	}
-
-
-  //       }
-
-
-		// document.getElementById("display").innerHTML = displayFiles(dir);
-
-
-
-
-});
-
-</script> 
-
+  var holder = document.getElementById('holder');
+  holder.ondragover = function () {
+    return false;
+  };
+  holder.ondragleave = holder.ondragend = function () {
+    return false;
+  };
+  holder.ondrop = function (e) {
+    e.preventDefault();
+    var file = e.dataTransfer.files[0];
+    console.log('File you dragged here is', file.path);
+    return false;
+  };
+</script>
 
 
 	</body>
+
 </html>
 
 
