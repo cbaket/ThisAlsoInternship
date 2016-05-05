@@ -2,6 +2,9 @@
 <html>
   	<head>
     		<meta charset="UTF-8">
+		<META HTTP-EQUIV="refresh" CONTENT="1">
+	
+	
     		<title>SALSA</title>
 		<link rel = "stylesheet" type="text/css" href = "css/index.css">
 		<link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:700,900' rel='stylesheet' type='text/css'>
@@ -250,34 +253,10 @@ var fileTypes = [];
 				}
                                     };
                             }(fileTYPESfile);
-
-
                             $(fileTYPESfile).appendTo(liFTAttach);
-
 	}
 
-
 }
-
-
-
-function addLinks () {
-        for (var i=0, link; i<5; i++) {
-                link = document.createElement("a");
-                link.innerHTML = "Link " + i;
-                link.onclick = function (num) {
-                        return function () {
-                                alert(num);
-                        };
-                }(i);
-                document.body.appendChild(link);
-        }
-}
-
-
-
-
-
 
 
 $(document).ready(function(){
