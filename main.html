@@ -2,8 +2,8 @@
 <html>
   	<head>
     		<meta charset="UTF-8">
-		<META HTTP-EQUIV="refresh" CONTENT="5">
-	
+	<!--	<META HTTP-EQUIV="refresh" CONTENT="5"> 
+	-->
 	
     		<title>SALSA</title>
 		<link rel = "stylesheet" type="text/css" href = "css/index.css">
@@ -15,6 +15,11 @@
 	Grid View icon by Shashank Singh from the Noun Project	 -->
 
         <body>
+
+		<div id = "grumpyDogCat">grumpyDogCat IS A JPG</div>
+                <div id = "taco">TACO IS A PNG YO!</div>
+                <div id = "jpg">JPG YO!</div>
+                <div id = "poop">POOP YO!</div>
 
 		<div id = "leftBody">
                 <div id="heading">
@@ -143,12 +148,11 @@ function display (files) {
 
                 var filename = document.getElementById(num).innerHTML;
 
-
+		console.log("The id of this object is->>" + num );
                 var exec = require('child_process').exec;
                 exec('open testFolder/' + filename);
 
                 console.log(num + "should have loaded");
-
                         };
                 }(i);
 
@@ -194,23 +198,22 @@ var fileTypes = [];
                     		console.log(fileTYPE + " was not added to the fileTypes list");
                          }
 
-        
-
-
 
 		// Displaying all files
 
-                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(filetypeUL);
+                $("<li></li>" ).attr('id', files[i].replace(".", "_")+"_li").appendTo(filetypeUL);
 
-                var liAttach = document.getElementById(files[i] + "_li");
+                var liAttach = document.getElementById(files[i].replace(".", "_") + "_li");
 
                 file = document.createElement("BUTTON");
                 file.innerHTML = files[i];
-                $(file).attr('id', files[i]);
+                
+		$(file).attr('id', files[i].replace(".", "_"));
                 file.onclick = function (num) {
                         return function () {
 
                 var filename = document.getElementById(num).innerHTML;
+			                console.log("The id of this object is->>" + num );
 
 
                 var exec = require('child_process').exec;
@@ -238,21 +241,17 @@ var fileTypes = [];
 
                             fileTYPESfile = document.createElement("BUTTON");
                             fileTYPESfile.innerHTML = fileTypes[i];
-				
-				console.log(fileTYPESfile);
 
                             $(fileTYPESfile).attr('id', fileTYPESfile);
-                            fileTYPESfile.onclick = function (ID) {
+
+				console.log($(fileTYPESfile).attr('id', fileTypes[i]));				
+
+                            fileTYPESfile.onclick = function (ID, files) {
                                     return function () {
-
-				    var filetypeName = document.getElementById(ID).innerHTML;
-
-				for (i = 0; i < files.length; i++){	
-				if (files[i].split('.').pop() != filetypeName){  $( "#" + files[i] ).hide();}	
-				
-				}
+					displayFileTypes (files, ID);
+					console.log("I should have done stuff");
                                     };
-                            }(fileTYPESfile);
+                            }(fileTypes[i], files);
                             $(fileTYPESfile).appendTo(liFTAttach);
 	}
 
@@ -262,6 +261,32 @@ function startRefresh() {
     $.get('', function(data) {
         $(document.body).html(data);
     });
+}
+
+
+
+
+// FileTypes hide feature
+
+
+function displayFileTypes (array, type){
+
+	console.log("I am now in the display File types area, haha yay");
+		for (i = 0; i < array.length; i++ ){
+
+			console.log("The type we are comparing is->> " +type);
+			console.log("This is the extension of my file" + array[i].split('.').pop());
+
+			if ((array[i].split('.').pop() != type)  && (array[i].split('.').pop() != ".git") && (array[i].split('.').pop() != ".DS_Store") && (array[i].split('.').pop() != ".htaccess")){
+
+				console.log(array[i]);
+				$( "#" + array[i].replace(".", "_") + "_li" ).hide();
+			} else {				
+                                $( "#" + array[i].replace(".", "_") + "_li" ).show();
+
+			}
+	
+		}	
 }
 
 
@@ -280,6 +305,10 @@ $(document).ready(function(){
 
 
 	nav(files);
+
+displayFileTypes(files, "png");
+
+
 // Sorting files by date 
 	files.sort(function(a, b) {
                return fs.statSync(dir + a).mtime.getTime() - 
@@ -310,10 +339,4 @@ $(document).ready(function(){
 
 	</body>
 </html>
-
-
-
-
-
-
 
