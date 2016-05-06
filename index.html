@@ -17,26 +17,29 @@
 		<h1>Welcome to Smart Working Folder</h1>
 
 
-	<div id="holder">
+<input type='file' webkitdirectory >
+
+
+<div id="dropzone">
   Drag your file here
 </div>
 
 <script>
-  var holder = document.getElementById('holder');
-  holder.ondragover = function () {
-    return false;
-  };
-  holder.ondragleave = holder.ondragend = function () {
-    return false;
-  };
-  holder.ondrop = function (e) {
-    e.preventDefault();
-    var file = e.dataTransfer.files[0];
-    console.log('File you dragged here is', file.path);
-    return false;
-  };
-</script>
 
+var dropzone = document.getElementById('dropzone');
+dropzone.ondrop = function(e) {
+  var length = e.dataTransfer.items.length;
+  for (var i = 0; i < length; i++) {
+    var entry = e.dataTransfer.items[i].webkitGetAsEntry();
+    if (entry.isFile) {
+      	console.log("You got a file");
+    } else if (entry.isDirectory) {
+		console.log("You got a directory");}
+
+    }
+};
+
+</script>
 
 	</body>
 
