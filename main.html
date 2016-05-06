@@ -255,6 +255,28 @@ var fileTypes = [];
                             $(fileTYPESfile).appendTo(liFTAttach);
 	}
 
+
+
+ $("<li></li>" ).attr('id', "all_li").appendTo(filetypeUL);
+
+                        var liFTAttach = document.getElementById("all_li");
+
+
+                            fileTYPESfile = document.createElement("BUTTON");
+                            fileTYPESfile.innerHTML = "all";
+
+                            $(fileTYPESfile).attr('id', "all");
+
+                            fileTYPESfile.onclick = function (ID, files) {
+                                    return function () {
+                                        displayFileTypes (files, ID);
+                                    };
+                            }("all", files);
+                            $(fileTYPESfile).appendTo(liFTAttach);
+
+
+
+
 }
 
 function startRefresh() {
@@ -272,11 +294,16 @@ function startRefresh() {
 function displayFileTypes (array, type){
 
 	console.log("I am now in the display File types area, haha yay");
+	if (type == "all"){
 		for (i = 0; i < array.length; i++ ){
+                                $( "#" + array[i].replace(".", "_") + "_li" ).show();
+                }	
+	
+	
+	} else {
 
-			console.log("The type we are comparing is->> " +type);
-			console.log("This is the extension of my file" + array[i].split('.').pop());
-
+		for (i = 0; i < array.length; i++ ){
+				
 			if ((array[i].split('.').pop() != type)  && (array[i].split('.').pop() != ".git") && (array[i].split('.').pop() != ".DS_Store") && (array[i].split('.').pop() != ".htaccess")){
 
 				console.log(array[i]);
@@ -286,7 +313,8 @@ function displayFileTypes (array, type){
 
 			}
 	
-		}	
+		}
+	}	
 }
 
 
