@@ -60,102 +60,38 @@
 
 <script>
 
-  function getFiletype(array){
+  function display (files, dir) {
+   for (var i= files.length-1, file; i >= 0; i--) {
+     if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
+      var recentDiv = document.getElementById('recent');
+      $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
 
-    var fileTypes = [];
-    var foundOrNah = false;
+      var liAttach = document.getElementById(files[i] + "_li");
 
-    if (array == []){
-      return fileTypes;
+      file = document.createElement("BUTTON");
+      file.innerHTML = files[i];
+      $(file).attr('id', i);
+      var j = i;
+      file.onclick = function (num) {
+        return function () {
+
+
+          var filename = document.getElementById(num).innerHTML;
+
+          console.log("The id of this object is->>" + num );
+          var exec = require('child_process').exec;
+          exec('open ' + dir + filename);
+
+          console.log(num + "should have loaded");
+        };
+      }(i);
+
+
+      $(file).appendTo(liAttach);
+
+
     }
-    for ( i = 0; i < array.length; i++){
-     var fileT = array[i].split('.').pop();
-     for (i = 0; i < fileTypes.length; i++){
-       if (fileTypes[i] == fileT){
-        foundOrNah = true; 
-      }
-    }
-
-    if (foundOrNah){
-      fileTypes.push(fileT);
-    }
-
   }
-  return fileTypes;
-}
-
-function createFiletypeElement(array){
-
-	for (i = 0; i < array.length; i++){
-		( function(i) {
-      console.log(i);
-      var rando = $("<p></p>").attr('id',array[i]);
-
-      console.log(rando);
-      rando.appendTo('body');
-      console.log(array[i]);                   var fileT = fs[i].split('.').pop();
-
-
-      document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
-    })(i);
-
-  }
-}
-
-
-function displayFiles(dir){
-	var displayStr = "";
-  var fs = require("fs");
-
-  fs = fs.readdirSync(dir);
-
-  for ( i = 0; i < fs.length; i++){
-
-   displayStr += fs[i] + "<br>";
-   var str = fs[i];
- }
-
- return displayStr;
-}
-
-
-function myFunction(dir, filename){
- document.open( dir + "/"+ filename, "replace");
-
-}
-
-function display (files, dir) {
- for (var i= files.length-1, file; i >= 0; i--) {
-   if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
-    var recentDiv = document.getElementById('recent');
-    $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
-
-    var liAttach = document.getElementById(files[i] + "_li");
-
-    file = document.createElement("BUTTON");
-    file.innerHTML = files[i];
-    $(file).attr('id', i);
-    var j = i;
-    file.onclick = function (num) {
-      return function () {
-
-
-        var filename = document.getElementById(num).innerHTML;
-
-        console.log("The id of this object is->>" + num );
-        var exec = require('child_process').exec;
-        exec('open ' + dir + filename);
-
-        console.log(num + "should have loaded");
-      };
-    }(i);
-
-
-    $(file).appendTo(liAttach);
-
-
-  }
-}
 }
 
 
@@ -325,9 +261,8 @@ $(document).ready(function(){
 
   console.log("files are going to be sorted");
 
-
-  nav(files, dir);
-
+// Displaying filetypes
+nav(files, dir);
 
 // Sorting files by date 
 files.sort(function(a, b) {
@@ -335,20 +270,10 @@ files.sort(function(a, b) {
  fs.statSync(dir + b).mtime.getTime();
 });
 
-console.log("files are sorted");
-
-
 // Displaying recent files
 display(files, dir);
 
-
-
-// Displaying filetypes
-
 });
-
-
-
 
 </script> 
 
