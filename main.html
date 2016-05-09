@@ -209,7 +209,9 @@ function nav (files, dir ) {
                   $(newfile).appendTo(liAttach);
 
                 }
+			      $( "#" + files[l].replace(".", "_") + "_li" ).hide();
 
+			
               }
   }
 
