@@ -124,7 +124,7 @@ function myFunction(dir, filename){
 
 }
 
-function display (files) {
+function display (files, dir) {
  for (var i= files.length-1, file; i >= 0; i--) {
    if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
     var recentDiv = document.getElementById('recent');
@@ -144,7 +144,7 @@ function display (files) {
 
         console.log("The id of this object is->>" + num );
         var exec = require('child_process').exec;
-        exec('open testFolder/' + filename);
+        exec('open ' + dir + filename);
 
         console.log(num + "should have loaded");
       };
@@ -160,7 +160,7 @@ function display (files) {
 
 
 
-function nav (files ) {
+function nav (files, dir ) {
   var fileTypes = [];
 
   var filetypeUL = document.getElementById('filetype');
@@ -264,7 +264,7 @@ for (var i= 0, file; i < files.length; i++) {
 
 
                     var exec = require('child_process').exec;
-                    exec('open testFolder/' + filename);
+                    exec('open '+ dir + filename);
 
                     console.log(num + "should have loaded");
 
@@ -326,7 +326,7 @@ $(document).ready(function(){
   console.log("files are going to be sorted");
 
 
-  nav(files);
+  nav(files, dir);
 
 
 // Sorting files by date 
@@ -339,7 +339,7 @@ console.log("files are sorted");
 
 
 // Displaying recent files
-display(files);
+display(files, dir);
 
 
 
