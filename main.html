@@ -315,10 +315,12 @@ function displayFileTypes (array, type){
 
 $(document).ready(function(){
 
-	var exec = require('child_process').exec;
 
-	var dir = '/Users/thisalsointern/Desktop/j';
-   	 var fs = require("fs");
+	var dir = localStorage.getItem("DIRECTORY") + '/';
+	console.log("The directory is " + dir );
+
+	var exec = require('child_process').exec;
+   	var fs = require("fs");
 	
 
 	var files = fs.readdirSync(dir);
