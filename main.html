@@ -5,7 +5,7 @@
 	<!--	<META HTTP-EQUIV="refresh" CONTENT="5"> 
 -->
 
-<title>SALSA</title>
+<title id="projectTITLE"></title>
 <link rel = "stylesheet" type="text/css" href = "css/index.css">
 <link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:700,900' rel='stylesheet' type='text/css'>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@
       <div id="heading">
         <table>
          <tr>
-          <td><h1 id = "folderName">SALSA</h1></td>
+          <td><h1 id = "folderName"></h1></td>
         </table>
       </div>
       <div id="main">
@@ -210,10 +210,8 @@ for (var i= 0, file; i < files.length; i++) {
 
                 $(file).appendTo(liAttach);
 
-              }
-
-
-            }
+         }
+ }
 
 
 // FileTypes hide feature
@@ -250,7 +248,11 @@ function displayFileTypes (array, type){
 $(document).ready(function(){
 
 
-	var dir = localStorage.getItem("DIRECTORY") + '/';
+	var name = localStorage.getItem("DIRECTORY");
+        $("#projectTITLE").html(name.split('/').pop());
+        $("#folderName").html(name.split('/').pop());
+
+	var dir = name + '/';
 	console.log("The directory is " + dir );
 
 	var exec = require('child_process').exec;
