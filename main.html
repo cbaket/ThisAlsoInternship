@@ -122,101 +122,103 @@ function nav (files, dir ) {
 
      if (newOrNah){
        fileTypes.push(fileTYPE);
-
        console.log(fileTYPE + " has been added to the fileTypes list");
      } else {
       console.log(fileTYPE + " was not added to the fileTypes list");
     }
 
-
-
   }
-}       
+}
+
+  console.log(fileTypes);
+  for ( var k = 0, fileTYPESfile; k < fileTypes.length; k++ ) {
+
+   $("<li></li>" ).attr('id', fileTypes[k]+"_li").appendTo(filetypeUL);
+
+   var liFTAttach = document.getElementById(fileTypes[k] + "_li");
 
 
-console.log(fileTypes);
-for ( var i = 0, fileTYPESfile; i < fileTypes.length; i++ ) {
+   fileTYPESfile = document.createElement("BUTTON");
+   fileTYPESfile.innerHTML = fileTypes[k];
 
- $("<li></li>" ).attr('id', fileTypes[i]+"_li").appendTo(filetypeUL);
+   $(fileTYPESfile).attr('id', fileTYPESfile);
 
- var liFTAttach = document.getElementById(fileTypes[i] + "_li");
+   console.log($(fileTYPESfile).attr('id', fileTypes[k]));				
+
+   fileTYPESfile.onclick = function (ID, files) {
+    return function () {
+     displayFileTypes (files, ID);
+     console.log("I should have done stuff");
+   };
+    }(fileTypes[k], files);
+    $(fileTYPESfile).appendTo(liFTAttach);
+
+    console.log("Going into the file check");
+
+// Adding filetypes files
+      for (var l= 0, newfile; l < files.length; l++) {
+
+                // Displaying all files
+
+                if (files[l].split('.').pop() == fileTypes[k]){
+                  $("<li></li>" ).attr('id', files[l].replace(".", "_")+"_li").appendTo(filetypeUL);
+
+                  var liAttach = document.getElementById(files[l].replace(".", "_") + "_li");
+
+                  newfile = document.createElement("BUTTON");
+                  newfile.innerHTML = files[l];
+
+                  console.log("This file should be attached-----> " + files[l]);
+
+                  $(newfile).attr('id', files[l].replace(".", "_"));
+                  newfile.onclick = function (num) {
+                    return function () {
+
+                      var filename = document.getElementById(num).innerHTML;
+                      console.log("The id of this object is->>" + num );
 
 
- fileTYPESfile = document.createElement("BUTTON");
- fileTYPESfile.innerHTML = fileTypes[i];
+                      var exec = require('child_process').exec;
+                      exec('open '+ dir + filename);
 
- $(fileTYPESfile).attr('id', fileTYPESfile);
+                      console.log(num + "should have loaded");
 
- console.log($(fileTYPESfile).attr('id', fileTypes[i]));				
+                    };
+                  }(files[l]);
 
- fileTYPESfile.onclick = function (ID, files) {
-  return function () {
-   displayFileTypes (files, ID);
-   console.log("I should have done stuff");
- };
-}(fileTypes[i], files);
-$(fileTYPESfile).appendTo(liFTAttach);
+
+                  $(newfile).appendTo(liAttach);
+
+                }
+
+              }
+  }
+
+
+            $("<li></li>" ).attr('id', "all_li").appendTo(filetypeUL);
+
+            var liFTAttach = document.getElementById("all_li");
+
+
+            fileTYPESfile = document.createElement("BUTTON");
+            fileTYPESfile.innerHTML = "all";
+
+            $(fileTYPESfile).attr('id', "all");
+
+            fileTYPESfile.onclick = function (ID, files) {
+              return function () {
+                displayFileTypes (files, ID);
+              };
+            }("all", files);
+            $(fileTYPESfile).appendTo(liFTAttach);
+
+
+
 }
 
 
 
-
-$("<li></li>" ).attr('id', "all_li").appendTo(filetypeUL);
-
-var liFTAttach = document.getElementById("all_li");
-
-
-fileTYPESfile = document.createElement("BUTTON");
-fileTYPESfile.innerHTML = "all";
-
-$(fileTYPESfile).attr('id', "all");
-
-fileTYPESfile.onclick = function (ID, files) {
-  return function () {
-    displayFileTypes (files, ID);
-  };
-}("all", files);
-$(fileTYPESfile).appendTo(liFTAttach);
-
-
-
-for (var i= 0, file; i < files.length; i++) {
-
-                // Displaying all files
-
-                $("<li></li>" ).attr('id', files[i].replace(".", "_")+"_li").appendTo(filetypeUL);
-
-                var liAttach = document.getElementById(files[i].replace(".", "_") + "_li");
-
-                file = document.createElement("BUTTON");
-                file.innerHTML = files[i];
-
-                $(file).attr('id', files[i].replace(".", "_"));
-                file.onclick = function (num) {
-                  return function () {
-
-                    var filename = document.getElementById(num).innerHTML;
-                    console.log("The id of this object is->>" + num );
-
-
-                    var exec = require('child_process').exec;
-                    exec('open '+ dir + filename);
-
-                    console.log(num + "should have loaded");
-
-                  };
-                }(files[i]);
-
-
-                $(file).appendTo(liAttach);
-
-         }
- }
-
-
 // FileTypes hide feature
-
-
 function displayFileTypes (array, type){
 
 	console.log("I am now in the display File types area, haha yay");
@@ -240,22 +242,23 @@ function displayFileTypes (array, type){
     }
 
   }
-}	
+  }
+
 }
+
 
 
 
 $(document).ready(function(){
 
-
 	var name = localStorage.getItem("DIRECTORY");
-        $("#projectTITLE").html(name.split('/').pop());
-        $("#folderName").html(name.split('/').pop());
+  $("#projectTITLE").html(name.split('/').pop());
+  $("#folderName").html(name.split('/').pop());
 
-	var dir = name + '/';
-	console.log("The directory is " + dir );
+  var dir = name + '/';
+  console.log("The directory is " + dir );
 
-	var exec = require('child_process').exec;
+  var exec = require('child_process').exec;
   var fs = require("fs");
 
 
@@ -278,9 +281,6 @@ display(files, dir);
 });
 
 </script> 
-
-
-
 </body>
 </html>
 
