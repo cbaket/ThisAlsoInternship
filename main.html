@@ -20,6 +20,8 @@
         <table>
          <tr>
           <td><h1 id = "folderName"></h1></td>
+	  <td><button onclick="changeDIR()">change folder</button></td>
+	</tr>
         </table>
       </div>
       <div id="main">
@@ -59,6 +61,23 @@
 
 
 <script>
+
+function changeDIR(){
+
+var remote = require('remote');
+var dialog = remote.require('electron').dialog;
+
+var path = dialog.showOpenDialog({
+    properties: ['openDirectory']
+});
+
+        console.log(path[0]);
+
+        localStorage.setItem("DIRECTORY", path[0]);
+
+location.reload();
+
+}
 
   function display (files, dir) {
    for (var i= files.length-1, file; i >= 0; i--) {
