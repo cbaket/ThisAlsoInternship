@@ -1,199 +1,252 @@
 <DOCTYPE html>
-<html>
-  	<head>
-    		<meta charset="UTF-8">
+  <html>
+  <head>
+    <meta charset="UTF-8">
 	<!--	<META HTTP-EQUIV="refresh" CONTENT="5"> 
-	-->
-	
-    		<title>SALSA</title>
-		<link rel = "stylesheet" type="text/css" href = "css/index.css">
-		<link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:700,900' rel='stylesheet' type='text/css'>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  	</head>
-	
+-->
+
+<title>SALSA</title>
+<link rel = "stylesheet" type="text/css" href = "css/index.css">
+<link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:700,900' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
 	<!-- List View icon by Icomatic from the Noun Project
 	Grid View icon by Shashank Singh from the Noun Project	 -->
 
-        <body>
-		<div id = "leftBody">
-                <div id="heading">
-                <table>
-			<tr>
-				<td><h1 id = "folderName">SALSA</h1></td>
-                </table>
-		</div>
-                <div id="main">
-                        <table>
-				<tr>
-                              		<td>
-						<h2>Pinned</h2> 
-						<div class = "selection">
-							<ul><ul>
-						</div>
-					</td>
-					<td class = "recent">
-						<h2>Recent</h2> 
-						<div class = "selection">
-							<ul></ul>
-						</div>
-					</td>
-				</tr>
-				<tr>
-                			<td id = "pinned">
-						<ul>
-                                                	<li>Click on the little gray<br>circle to pin a file</li>
-                              			</ul>
-                      		</td>
-					<td class ="recent"> 
-                                		<ul id = "recent"></ul>
-				</td>
-				</tr>
-			</table>
-                </div>
-		</div>
-        	<nav>
-			<section id = "option">
-				<ul id="filetype"></ul>
-			</section>
-		</nav>
+  <body>
+    <div id = "leftBody">
+      <div id="heading">
+        <table>
+         <tr>
+          <td><h1 id = "folderName">SALSA</h1></td>
+        </table>
+      </div>
+      <div id="main">
+        <table>
+          <tr>
+            <td>
+              <h2>Pinned</h2> 
+              <div class = "selection">
+               <ul><ul>
+               </div>
+             </td>
+             <td class = "recent">
+              <h2>Recent</h2> 
+              <div class = "selection">
+               <ul></ul>
+             </div>
+           </td>
+         </tr>
+         <tr>
+           <td id = "pinned">
+            <ul>
+             <li>Click on the little gray<br>circle to pin a file</li>
+           </ul>
+         </td>
+         <td class ="recent"> 
+          <ul id = "recent"></ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<nav>
+ <section id = "option">
+  <ul id="filetype"></ul>
+</section>
+</nav>
 
 
 <script>
 
-function getFiletype(array){
+  function getFiletype(array){
 
-        var fileTypes = [];
-	var foundOrNah = false;
+    var fileTypes = [];
+    var foundOrNah = false;
 
-        if (array == []){
-		return fileTypes;
-	}
-        for ( i = 0; i < array.length; i++){
-           var fileT = array[i].split('.').pop();
-		for (i = 0; i < fileTypes.length; i++){
-                	if (fileTypes[i] == fileT){
-                		foundOrNah = true; 
-			}
-		}
+    if (array == []){
+      return fileTypes;
+    }
+    for ( i = 0; i < array.length; i++){
+     var fileT = array[i].split('.').pop();
+     for (i = 0; i < fileTypes.length; i++){
+       if (fileTypes[i] == fileT){
+        foundOrNah = true; 
+      }
+    }
 
-	if (foundOrNah){
-		fileTypes.push(fileT);
-	}
+    if (foundOrNah){
+      fileTypes.push(fileT);
+    }
 
-        }
-        return fileTypes;
+  }
+  return fileTypes;
 }
 
 function createFiletypeElement(array){
 
 	for (i = 0; i < array.length; i++){
 		( function(i) {
-		console.log(i);
-		var rando = $("<p></p>").attr('id',array[i]);
+      console.log(i);
+      var rando = $("<p></p>").attr('id',array[i]);
 
-		console.log(rando);
-		rando.appendTo('body');
-		console.log(array[i]);                   var fileT = fs[i].split('.').pop();
+      console.log(rando);
+      rando.appendTo('body');
+      console.log(array[i]);                   var fileT = fs[i].split('.').pop();
 
-	
-		document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
-	    })(i);
 
-	}
+      document.getElementById(array[i]).innerHTML = "New " + array[i] + " element, is working";
+    })(i);
+
+  }
 }
 
 
 function displayFiles(dir){
 	var displayStr = "";
-        var fs = require("fs");
+  var fs = require("fs");
 
-	 fs = fs.readdirSync(dir);
-	
-        for ( i = 0; i < fs.length; i++){
+  fs = fs.readdirSync(dir);
 
-         displayStr += fs[i] + "<br>";
-         var str = fs[i];
-        }
+  for ( i = 0; i < fs.length; i++){
 
-	return displayStr;
+   displayStr += fs[i] + "<br>";
+   var str = fs[i];
+ }
+
+ return displayStr;
 }
 
 
 function myFunction(dir, filename){
-	    document.open( dir + "/"+ filename, "replace");
+ document.open( dir + "/"+ filename, "replace");
 
 }
 
 function display (files) {
  for (var i= files.length-1, file; i >= 0; i--) {
-	if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
-                var recentDiv = document.getElementById('recent');
-                $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
+   if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
+    var recentDiv = document.getElementById('recent');
+    $("<li></li>" ).attr('id', files[i]+"_li").appendTo(recentDiv);
 
-                var liAttach = document.getElementById(files[i] + "_li");
+    var liAttach = document.getElementById(files[i] + "_li");
 
-                file = document.createElement("BUTTON");
-                file.innerHTML = files[i];
-                $(file).attr('id', i);
-                var j = i;
-                file.onclick = function (num) {
-                        return function () {
-
-
-                var filename = document.getElementById(num).innerHTML;
-
-		console.log("The id of this object is->>" + num );
-                var exec = require('child_process').exec;
-                exec('open testFolder/' + filename);
-
-                console.log(num + "should have loaded");
-                        };
-                }(i);
+    file = document.createElement("BUTTON");
+    file.innerHTML = files[i];
+    $(file).attr('id', i);
+    var j = i;
+    file.onclick = function (num) {
+      return function () {
 
 
-                $(file).appendTo(liAttach);
+        var filename = document.getElementById(num).innerHTML;
+
+        console.log("The id of this object is->>" + num );
+        var exec = require('child_process').exec;
+        exec('open testFolder/' + filename);
+
+        console.log(num + "should have loaded");
+      };
+    }(i);
 
 
-        	}
-	}
+    $(file).appendTo(liAttach);
+
+
+  }
+}
 }
 
 
 
 function nav (files ) {
-var fileTypes = [];
+  var fileTypes = [];
 
-                var filetypeUL = document.getElementById('filetype');
-		
+  var filetypeUL = document.getElementById('filetype');
 
- for (var i= 0, file; i < files.length; i++) {
-        if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
-        	
 
+  for (var i= 0, file; i < files.length; i++) {
+    if ((files[i] != ".git") && (files[i] != ".DS_Store") && (files[i] != ".htaccess") ){
 
 
 		//Displaying filetypes    
-    	
-                var newOrNah = true;
-                var fileTYPE = files[i].split('.').pop();
+
+    var newOrNah = true;
+    var fileTYPE = files[i].split('.').pop();
 
 
-                for (j = 0; j < fileTypes.length; j++){
+    console.log(fileTYPE);
 
-                    if (fileTypes[j] == fileTYPE) { 
-			newOrNah = false;  }
-                }
+    for (j = 0; j < fileTypes.length; j++){
 
-                    if (newOrNah){
-                     fileTypes.push(fileTYPE);
-			
-                                console.log(fileTYPE + " has been added to the fileTypes list");
-                    } else {
-                    		console.log(fileTYPE + " was not added to the fileTypes list");
-                         }
+      if (fileTypes[j] == fileTYPE) { 
+       newOrNah = false;  }
+     }
+
+     if (newOrNah){
+       fileTypes.push(fileTYPE);
+
+       console.log(fileTYPE + " has been added to the fileTypes list");
+     } else {
+      console.log(fileTYPE + " was not added to the fileTypes list");
+    }
 
 
-		// Displaying all files
+
+  }
+}       
+
+
+console.log(fileTypes);
+for ( var i = 0, fileTYPESfile; i < fileTypes.length; i++ ) {
+
+ $("<li></li>" ).attr('id', fileTypes[i]+"_li").appendTo(filetypeUL);
+
+ var liFTAttach = document.getElementById(fileTypes[i] + "_li");
+
+
+ fileTYPESfile = document.createElement("BUTTON");
+ fileTYPESfile.innerHTML = fileTypes[i];
+
+ $(fileTYPESfile).attr('id', fileTYPESfile);
+
+ console.log($(fileTYPESfile).attr('id', fileTypes[i]));				
+
+ fileTYPESfile.onclick = function (ID, files) {
+  return function () {
+   displayFileTypes (files, ID);
+   console.log("I should have done stuff");
+ };
+}(fileTypes[i], files);
+$(fileTYPESfile).appendTo(liFTAttach);
+}
+
+
+
+
+$("<li></li>" ).attr('id', "all_li").appendTo(filetypeUL);
+
+var liFTAttach = document.getElementById("all_li");
+
+
+fileTYPESfile = document.createElement("BUTTON");
+fileTYPESfile.innerHTML = "all";
+
+$(fileTYPESfile).attr('id', "all");
+
+fileTYPESfile.onclick = function (ID, files) {
+  return function () {
+    displayFileTypes (files, ID);
+  };
+}("all", files);
+$(fileTYPESfile).appendTo(liFTAttach);
+
+
+
+for (var i= 0, file; i < files.length; i++) {
+
+                // Displaying all files
 
                 $("<li></li>" ).attr('id', files[i].replace(".", "_")+"_li").appendTo(filetypeUL);
 
@@ -201,85 +254,30 @@ var fileTypes = [];
 
                 file = document.createElement("BUTTON");
                 file.innerHTML = files[i];
-                
-		$(file).attr('id', files[i].replace(".", "_"));
+
+                $(file).attr('id', files[i].replace(".", "_"));
                 file.onclick = function (num) {
-                        return function () {
+                  return function () {
 
-                var filename = document.getElementById(num).innerHTML;
-			                console.log("The id of this object is->>" + num );
+                    var filename = document.getElementById(num).innerHTML;
+                    console.log("The id of this object is->>" + num );
 
 
-                var exec = require('child_process').exec;
-                exec('open testFolder/' + filename);
+                    var exec = require('child_process').exec;
+                    exec('open testFolder/' + filename);
 
-                console.log(num + "should have loaded");
+                    console.log(num + "should have loaded");
 
-                        };
+                  };
                 }(files[i]);
 
 
                 $(file).appendTo(liAttach);
 
-
-                }
- }      
-
-
- for ( var i = 0, fileTYPESfile; i < fileTypes.length; i++ ) {
-
-        	        $("<li></li>" ).attr('id', fileTypes[i]+"_li").appendTo(filetypeUL);
-	
-                	var liFTAttach = document.getElementById(fileTypes[i] + "_li");
-
-
-                            fileTYPESfile = document.createElement("BUTTON");
-                            fileTYPESfile.innerHTML = fileTypes[i];
-
-                            $(fileTYPESfile).attr('id', fileTYPESfile);
-
-				console.log($(fileTYPESfile).attr('id', fileTypes[i]));				
-
-                            fileTYPESfile.onclick = function (ID, files) {
-                                    return function () {
-					displayFileTypes (files, ID);
-					console.log("I should have done stuff");
-                                    };
-                            }(fileTypes[i], files);
-                            $(fileTYPESfile).appendTo(liFTAttach);
-	}
-
-
-
- $("<li></li>" ).attr('id', "all_li").appendTo(filetypeUL);
-
-                        var liFTAttach = document.getElementById("all_li");
-
-
-                            fileTYPESfile = document.createElement("BUTTON");
-                            fileTYPESfile.innerHTML = "all";
-
-                            $(fileTYPESfile).attr('id', "all");
-
-                            fileTYPESfile.onclick = function (ID, files) {
-                                    return function () {
-                                        displayFileTypes (files, ID);
-                                    };
-                            }("all", files);
-                            $(fileTYPESfile).appendTo(liFTAttach);
-
-
+              }
 
 
 }
-
-function startRefresh() {
-    $.get('', function(data) {
-        $(document.body).html(data);
-    });
-}
-
-
 
 
 // FileTypes hide feature
@@ -290,25 +288,25 @@ function displayFileTypes (array, type){
 	console.log("I am now in the display File types area, haha yay");
 	if (type == "all"){
 		for (i = 0; i < array.length; i++ ){
-                                $( "#" + array[i].replace(".", "_") + "_li" ).show();
-                }	
-	
-	
-	} else {
+      $( "#" + array[i].replace(".", "_") + "_li" ).show();
+    }	
 
-		for (i = 0; i < array.length; i++ ){
-				
-			if ((array[i].split('.').pop() != type)  && (array[i].split('.').pop() != ".git") && (array[i].split('.').pop() != ".DS_Store") && (array[i].split('.').pop() != ".htaccess")){
 
-				console.log(array[i]);
-				$( "#" + array[i].replace(".", "_") + "_li" ).hide();
-			} else {				
-                                $( "#" + array[i].replace(".", "_") + "_li" ).show();
+  } else {
 
-			}
-	
-		}
-	}	
+    for (i = 0; i < array.length; i++ ){
+
+     if ((array[i].split('.').pop() != type)  && (array[i].split('.').pop() != ".git") && (array[i].split('.').pop() != ".DS_Store") && (array[i].split('.').pop() != ".htaccess")){
+
+      console.log(array[i]);
+      $( "#" + array[i].replace(".", "_") + "_li" ).hide();
+    } else {				
+      $( "#" + array[i].replace(".", "_") + "_li" ).show();
+
+    }
+
+  }
+}	
 }
 
 
@@ -320,35 +318,32 @@ $(document).ready(function(){
 	console.log("The directory is " + dir );
 
 	var exec = require('child_process').exec;
-   	var fs = require("fs");
-	
-
-	var files = fs.readdirSync(dir);
-
-	console.log("files are going to be sorted");
+  var fs = require("fs");
 
 
-	nav(files);
+  var files = fs.readdirSync(dir);
+
+  console.log("files are going to be sorted");
+
+
+  nav(files);
 
 
 // Sorting files by date 
-	files.sort(function(a, b) {
-               return fs.statSync(dir + a).mtime.getTime() - 
-                      fs.statSync(dir + b).mtime.getTime();
-           });
+files.sort(function(a, b) {
+ return fs.statSync(dir + a).mtime.getTime() - 
+ fs.statSync(dir + b).mtime.getTime();
+});
 
-	console.log("files are sorted");
+console.log("files are sorted");
 
 
 // Displaying recent files
-	display(files);
+display(files);
 
 
 
 // Displaying filetypes
-
-
-//    setTimeout(startRefresh,1000);
 
 });
 
@@ -359,6 +354,6 @@ $(document).ready(function(){
 
 
 
-	</body>
+</body>
 </html>
 
