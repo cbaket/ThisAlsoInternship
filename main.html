@@ -60,14 +60,13 @@
   -->       <td class ="recent"> 
           <ul id = "recent"></ul>
         </td>
-      </tr>
+     <td class ="nav">
+          <ul id = "fileTsec"></ul>
+        </td>
+	 </tr>
     </table>
   </div>
 </div>
-<nav>
- <section id = "option">
-  <ul id="filetype"></ul>
-</section>
 </nav>
 
 
@@ -153,6 +152,7 @@ function nav (files, dir ) {
   var fileTypes = [];
 
   var filetypeUL = document.getElementById('filetype');
+  var filetypeFILESUL = document.getElementById('fileTsec');
 
 
   for (var i= 0, file; i < files.length; i++) {
@@ -214,7 +214,7 @@ function nav (files, dir ) {
                 // Displaying all files
 
                 if (files[l].split('.').pop() == fileTypes[k]){
-                  $("<li></li>" ).attr('id', files[l].replace(".", "_")+"_li").appendTo(filetypeUL);
+                  $("<li></li>" ).attr('id', files[l].replace(".", "_")+"_li").appendTo(filetypeFILESUL);
 
                   var liAttach = document.getElementById(files[l].replace(".", "_") + "_li");
 
