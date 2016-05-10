@@ -1,0 +1,155 @@
+html {
+	background-color: #B2E5E3;
+}
+
+body {
+	padding-left: 2em;
+	margin: 0;
+}
+
+#leftBody {
+	float: left;
+} 
+
+
+/****************************************
+HEADER!!!
+****************************************/
+
+h1 {
+	font-family: Oswald;
+	font-weight: 700;
+	font-size: 48px;
+	color: #4A4A4A;
+
+	text-transform: uppercase;
+}
+
+
+p {
+        font-family: Oswald;
+        font-weight: 300;
+	font-size: 17px;
+	color: #4A4A4A;
+}
+
+
+#create {
+	padding-top: 1.8em;
+	padding-left: 1em;
+}
+
+div#heading {
+	padding-left: 2.1em;
+}
+
+/****************************************
+MAIN PINNED AND RECENT!!!
+****************************************/
+
+h2, li, button {
+	font-family: Lato;
+	font-weight: 700;
+	color: #4A4A4A;
+}
+
+h2 {
+	text-transform: uppercase;
+	padding-left: 1.2em;
+	font-size: 30px;
+}
+
+li {
+	text-transform: lowercase;
+	padding-bottom: .6em;
+	font-size: 15px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+
+img {
+	height: 12px;
+}
+
+.selection {
+	padding-top: 1.5em;
+    	padding-left: 2em;
+}
+
+
+.selection ul {
+	padding-left: 6em;
+}
+
+
+.leftList {
+	float: left;
+}
+
+.rightList {
+	float : right; 
+}
+
+
+button {
+	
+	background-color: #B2E5E3; 
+	border: none;
+	font-size: 15px;
+}
+
+
+td#pinned {
+	vertical-align: top;
+}
+
+/*
+ button:active, button:focus 
+ {
+     border:0.1em solid #6200E9;  here configure as your needs
+  }
+
+*/
+
+ul#recent {
+
+	padding-left: 2em;
+}
+
+h2 {
+margin-bottom: -.9em;
+}
+
+/****************************************     
+NAVIGATION SIDEBAR!!!     
+****************************************/
+
+nav {
+	float: right;
+	background-color: rgba(255, 255, 255, .5);
+	
+	height: 100vh;
+	width: 25%;
+	padding-top: 25%;
+	
+	text-align: center;
+}
+
+a {
+	color: #4A4A4A;
+	text-decoration: none;
+	padding-top: 2em;
+}
+
+#option li{
+	font-family: Lato;
+	font-weight: 900;
+	text-transform:uppercase; 
+}
+
+#option ul {
+	padding: 0em;
+}

@@ -16,7 +16,7 @@ body {
 HEADER!!!
 ****************************************/
 
-h1 {
+h1, h2 {
 	font-family: Oswald;
 	font-weight: 700;
 	font-size: 48px;
@@ -27,76 +27,24 @@ h1 {
 
 
 p {
-        font-family: Oswald;
-        font-weight: 300;
 	font-size: 17px;
-	color: #4A4A4A;
-}
-
-
-#create {
-	padding-top: 1.8em;
-	padding-left: 1em;
-}
-
-div#heading {
-	padding-left: 2.1em;
-}
-
-/****************************************
-MAIN PINNED AND RECENT!!!
-****************************************/
-
-h2, li, button {
 	font-family: Lato;
-	font-weight: 700;
+	font-weight: 400;
 	color: #4A4A4A;
 }
 
 h2 {
 	text-transform: uppercase;
-	padding-left: 1.2em;
 	font-size: 30px;
-}
-
-li {
-	text-transform: lowercase;
-	padding-bottom: .6em;
-	font-size: 15px;
-}
-
-ul {
-	list-style-type: none;
-}
-
-
-img {
-	height: 12px;
-}
-
-.selection {
-	padding-top: 1.5em;
-    	padding-left: 2em;
-}
-
-
-.selection ul {
-	padding-left: 6em;
-}
-
-
-.leftList {
-	float: left;
-}
-
-.rightList {
-	float : right; 
 }
 
 
 button {
 	
-	background-color: #B2E5E3; 
+	font-family: Lato;
+	font-weight: 900;
+	background-color: #4A4A4A; 
+	color: #FFF;
 	border: none;
 	font-size: 15px;
 }
@@ -119,37 +67,4 @@ ul#recent {
 	padding-left: 2em;
 }
 
-h2 {
-margin-bottom: -.9em;
-}
 
-/****************************************     
-NAVIGATION SIDEBAR!!!     
-****************************************/
-
-nav {
-	float: right;
-	background-color: rgba(255, 255, 255, .5);
-	
-	height: 100vh;
-	width: 25%;
-	padding-top: 25%;
-	
-	text-align: center;
-}
-
-a {
-	color: #4A4A4A;
-	text-decoration: none;
-	padding-top: 2em;
-}
-
-#option li{
-	font-family: Lato;
-	font-weight: 900;
-	text-transform:uppercase; 
-}
-
-#option ul {
-	padding: 0em;
-}
