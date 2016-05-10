@@ -40,7 +40,9 @@ p {
 }
 
 div#heading {
-	padding-left: 2.1em;
+	padding-left: 2.1em;	
+	margin-bottom: -3em;
+
 }
 
 /****************************************
@@ -53,7 +55,7 @@ h3, h2, li, button {
 	color: #4A4A4A;
 }
 
-h2, h3 {
+h2 {
 	text-transform: uppercase;
 	padding-left: 1.2em;
 	font-size: 30px;
@@ -120,7 +122,7 @@ ul#recent {
 }
 
 h2 {
-margin-bottom: -.9em;
+margin-bottom: -2em;
 }
 
 
@@ -132,13 +134,22 @@ td.recent {
 }
 
 h3 {
-	text-transform: lowercase;
+	text-transform: uppercase;
+	text-size: 12px;
+        padding-left: 1.2em;
+
 }
 
 td.nav {
 
 	vertical-align: top;
 }
+
+#fileTsec {
+    padding-left: 20px;
+
+}
+
 
 /* Dropdown Button */
 .dropbtn {
@@ -148,6 +159,8 @@ td.nav {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    margin-top: 2em;
+
 }
 
 /* Dropdown button on hover & focus */
