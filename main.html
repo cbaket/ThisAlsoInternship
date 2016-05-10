@@ -39,10 +39,8 @@
              </div>
            </td>
 	  <td>
- 	<h3>view</h3>
-
 <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <h3>viewing <button onclick="myFunction()" class="dropbtn" id="viewing_type">no filetype</button></h3>
   <div id="myDropdown" class="dropdown-content">
     <ul id="filetype"></ul>
 
@@ -201,6 +199,7 @@ function nav (files, dir ) {
    fileTYPESfile.onclick = function (ID, files) {
     return function () {
      displayFileTypes (files, ID);
+	$("#viewing_type").html(ID + " files");
      console.log("I should have done stuff");
    };
     }(fileTypes[k], files);
@@ -278,6 +277,9 @@ function displayFileTypes (array, type){
 
 	console.log("I am now in the display File types area, haha yay");
 	if (type == "all"){
+
+	        $("#viewing_type").html("all files");
+
 		for (i = 0; i < array.length; i++ ){
       $( "#" + array[i].replace(".", "_") + "_li" ).show();
     }	
