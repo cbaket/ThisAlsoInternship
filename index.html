@@ -2,7 +2,7 @@
 <html>
   	<head>
     		<meta charset="UTF-8">
-    		<title>SALSA</title>
+    		<title>ALTIN</title>
 		<link rel = "stylesheet" type="text/css" href = "css/index.css">
 		<link href='https://fonts.googleapis.com/css?family=Oswald:300,700|Lato:400,700,900' rel='stylesheet' type='text/css'>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
@@ -38,14 +38,19 @@ var path = dialog.showOpenDialog({
 
 }
 
+document.addEventListener("keydown", function (e) {
+		if (e.which === 123) {
+			require('remote').getCurrentWindow().toggleDevTools();
+		} else if (e.which === 116) {
+			location.reload();
+		}
+	});
 
 
-//$(document).ready(function(){
-//	const BrowserWindow = require('electron').remote.BrowserWindow;
-//	BrowserWindow.removeDevToolsExtension('React Developer Tools');
+// const {app, BrowserWindow} = require('electron');
+// require('electron-debug')({showDevTools: false});
 
 
-//});
 </script>
 
 	</body>
