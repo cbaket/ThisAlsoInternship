@@ -13,10 +13,14 @@
 
         <body>
 
-		<h1>Welcome to Smart Working Folder</h1>
+		<h1>Welcome to ALTIN</h1>
+		<p>Altin is the first ever smart working folder designed with designers in mind! Altin gives a clear visual of your most recent files and groups files by file type</p>
+		<h2>USING ALTIN</h2>
+		<p>Choose the folder you would like to be organized and ENJOY!</p>
 
-                <a href ="main.html">Main page</a>
+                <button onclick="changeDIR()">CHOOSE A FOLDER</button>
 <script>
+function changeDIR(){
 
 var remote = require('remote');
 var dialog = remote.require('electron').dialog;
@@ -25,9 +29,13 @@ var path = dialog.showOpenDialog({
     properties: ['openDirectory']
 });
 
-	console.log(path[0]);
+        console.log(path[0]);
 
-	localStorage.setItem("DIRECTORY", path[0]);
+        localStorage.setItem("DIRECTORY", path[0]);
+	window.location.href = "main.html";
+
+}
+
 </script>
 
 	</body>
