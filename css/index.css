@@ -69,10 +69,6 @@ ul {
 	list-style-type: none;
 }
 
-.recent {
-
-	padding-left: 8em;
-}
 
 img {
 	height: 12px;
@@ -117,6 +113,15 @@ td#pinned {
   }
 
 */
+
+ul#recent {
+
+	padding-left: 2em;
+}
+
+h2 {
+margin-bottom: -.9em;
+}
 
 /****************************************     
 NAVIGATION SIDEBAR!!!     
